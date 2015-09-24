@@ -1,0 +1,10 @@
+base
+knitr
+zoo
+xts
+TTR
+quantmod
+timeDate
+forecast
+ggplot2
+slidify
