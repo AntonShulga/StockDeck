@@ -103,7 +103,7 @@ yyy &lt;- results[results$predHorizon == 24 &amp; results$confInterval == 95,]
   <article data-timings="">
     <p>Now we will see how sensitive the accurace is to different confidence intervals. </p>
 
-<pre><code class="r">ggplot(xxx, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
+<pre><code class="r">ggplot(results, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
    xlab(&quot;Confidence interval (months)&quot;) + ylab(&quot;Error rate (%)&quot;)
 </code></pre>
 

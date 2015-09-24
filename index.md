@@ -59,7 +59,7 @@ Some of the predictions (Netflix) demonstrate poor accuracy and require further 
 Now we will see how sensitive the accurace is to different confidence intervals. 
 
 ```r
-ggplot(xxx, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
+ggplot(results, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
    xlab("Confidence interval (months)") + ylab("Error rate (%)")
 ```
 
