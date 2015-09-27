@@ -38,7 +38,7 @@ You should see that RMSE for 12 months predictions is 53.1 USD and 1/3 of the da
 Now we are going to analyse accuracy of predictions for a number of stocks (Amazon, Netflix, Microsoft and Vodafone) and for different learning depths (36/42/48/54/60 months).
 
 ```r
-source("StockPred.R"); library(ggplot2)
+source("StockPred.R"); library(ggplot2) # sourcing user-defined stockPred function
 results <- stockPred(c("AMZN","MSFT", "NFLX", "VOD"), c(36,42,48,54,60), 24, c(50,75,95))
 yyy <- results[results$predHorizon == 24 & results$confInterval == 95,]
 ```
@@ -59,8 +59,8 @@ Some of the predictions (Netflix) demonstrate poor accuracy and require further 
 Now we will see how sensitive the accurace is to different confidence intervals. 
 
 ```r
-ggplot(xxx, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
-   xlab("Confidence interval (months)") + ylab("Error rate (%)")
+ggplot(results, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
+   xlab("Confidence interval (%)") + ylab("Error rate (%)")
 ```
 
 <img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />

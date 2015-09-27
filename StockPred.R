@@ -1,4 +1,5 @@
 require(quantmod); require(forecast)
+options("getSymbols.warning4.0"=FALSE) 
 
 stockPred <- function(stockList, lDepth, predHorizon, confInterval) {
    
@@ -13,7 +14,7 @@ stockPred <- function(stockList, lDepth, predHorizon, confInterval) {
       for (j in 1:length(lDepth)) {
          for (n in 1:length(predHorizon)) {
             data <- as.data.frame(getSymbols(stockList[i], src = "yahoo", 
-                                             from = as.character(Sys.Date()-lDepth[j]*30-predHorizon[n]*30),
+                                             from = as.character(Sys.Date()-lDepth[j]*30.5-predHorizon[n]*30.5),
                                              to = as.character(Sys.Date()),
                                              auto.assign = FALSE))
             
@@ -23,8 +24,8 @@ stockPred <- function(stockList, lDepth, predHorizon, confInterval) {
             
             ts1 <- ts(data, frequency = 12)
             
-            ts1Train <- window(ts1, start = 1, end = (lDepth[j]-1)/12)
-            ts1Test <- window(ts1, start = lDepth[j]/12, end = length(ts1)/12-0.01)
+            ts1Train <- window(ts1, start = 1, end = (lDepth[j])/12+1-0.01)
+            ts1Test <- window(ts1, start = lDepth[j]/12+1, end = length(ts1)/12+1-0.1)
             
             ets1 <- ets(ts1Train, model="MMM")
             

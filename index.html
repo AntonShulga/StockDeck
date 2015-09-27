@@ -80,7 +80,7 @@
   <article data-timings="">
     <p>Now we are going to analyse accuracy of predictions for a number of stocks (Amazon, Netflix, Microsoft and Vodafone) and for different learning depths (36/42/48/54/60 months).</p>
 
-<pre><code class="r">source(&quot;StockPred.R&quot;); library(ggplot2)
+<pre><code class="r">source(&quot;StockPred.R&quot;); library(ggplot2) # sourcing user-defined stockPred function
 results &lt;- stockPred(c(&quot;AMZN&quot;,&quot;MSFT&quot;, &quot;NFLX&quot;, &quot;VOD&quot;), c(36,42,48,54,60), 24, c(50,75,95))
 yyy &lt;- results[results$predHorizon == 24 &amp; results$confInterval == 95,]
 </code></pre>
@@ -103,8 +103,8 @@ yyy &lt;- results[results$predHorizon == 24 &amp; results$confInterval == 95,]
   <article data-timings="">
     <p>Now we will see how sensitive the accurace is to different confidence intervals. </p>
 
-<pre><code class="r">ggplot(xxx, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
-   xlab(&quot;Confidence interval (months)&quot;) + ylab(&quot;Error rate (%)&quot;)
+<pre><code class="r">ggplot(results, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
+   xlab(&quot;Confidence interval (%)&quot;) + ylab(&quot;Error rate (%)&quot;)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" /></p>
