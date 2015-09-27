@@ -67,7 +67,7 @@
 <li>Push Update Stock button!</li>
 </ul>
 
-<p>You should see that RMSE for 12 months predictions is 53.1 USD and 1/3 of the data points in test period are out of prediction interval (33% error rate).</p>
+<p>You should see that RMSE for 12 months predictions is 58.6 USD and 1/4 of the data points in test period are out of prediction interval (25% error rate).</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -80,7 +80,7 @@
   <article data-timings="">
     <p>Now we are going to analyse accuracy of predictions for a number of stocks (Amazon, Netflix, Microsoft and Vodafone) and for different learning depths (36/42/48/54/60 months).</p>
 
-<pre><code class="r">source(&quot;StockPred.R&quot;); library(ggplot2)
+<pre><code class="r">source(&quot;StockPred.R&quot;); library(ggplot2) # sourcing user-defined stockPred function
 results &lt;- stockPred(c(&quot;AMZN&quot;,&quot;MSFT&quot;, &quot;NFLX&quot;, &quot;VOD&quot;), c(36,42,48,54,60), 24, c(50,75,95))
 yyy &lt;- results[results$predHorizon == 24 &amp; results$confInterval == 95,]
 </code></pre>
@@ -104,12 +104,12 @@ yyy &lt;- results[results$predHorizon == 24 &amp; results$confInterval == 95,]
     <p>Now we will see how sensitive the accurace is to different confidence intervals. </p>
 
 <pre><code class="r">ggplot(results, aes(as.factor(confInterval), errRate, group = confInterval)) + geom_boxplot() + 
-   xlab(&quot;Confidence interval (months)&quot;) + ylab(&quot;Error rate (%)&quot;)
+   xlab(&quot;Confidence interval (%)&quot;) + ylab(&quot;Error rate (%)&quot;)
 </code></pre>
 
 <p><img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" /></p>
 
-<p>As we can see 95% confidence interval provides error rate in the range of 11-25% which is probably too large for the profitable low risk investment strategy to base on. 
+<p>As we can see 95% confidence interval provides error rate in the range of 6-18% which is probably too large for the profitable low risk investment strategy to base on. 
 The above analysis provides some grounds for declining autoregression methods as a reliable way for stock price predictions. Other factors should be considered for including into the model.  </p>
 
   </article>
