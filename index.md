@@ -29,7 +29,7 @@ Basic idea of the application is to develop prediction of chosen stock price for
 - Set confidence interval to 90%
 - Push Update Stock button!
 
-You should see that RMSE for 12 months predictions is 53.1 USD and 1/3 of the data points in test period are out of prediction interval (33% error rate).
+You should see that RMSE for 12 months predictions is 58.6 USD and 1/4 of the data points in test period are out of prediction interval (25% error rate).
 
 --- .class #id 
 
@@ -65,5 +65,5 @@ ggplot(results, aes(as.factor(confInterval), errRate, group = confInterval)) + g
 
 <img src="assets/fig/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" style="display: block; margin: auto;" />
 
-As we can see 95% confidence interval provides error rate in the range of 11-25% which is probably too large for the profitable low risk investment strategy to base on. 
+As we can see 95% confidence interval provides error rate in the range of 6-18% which is probably too large for the profitable low risk investment strategy to base on. 
 The above analysis provides some grounds for declining autoregression methods as a reliable way for stock price predictions. Other factors should be considered for including into the model.  

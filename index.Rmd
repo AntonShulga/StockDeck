@@ -58,5 +58,5 @@ ggplot(results, aes(as.factor(confInterval), errRate, group = confInterval)) + g
    xlab("Confidence interval (%)") + ylab("Error rate (%)")
 ```
 
-As we can see 95% confidence interval provides error rate in the range of 11-25% which is probably too large for the profitable low risk investment strategy to base on. 
+As we can see 95% confidence interval provides error rate in the range of 6-18% which is probably too large for the profitable low risk investment strategy to base on. 
 The above analysis provides some grounds for declining autoregression methods as a reliable way for stock price predictions. Other factors should be considered for including into the model.  
